@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Input area -->
+    <label for="Speech Recognition">(Speech Recognition) التعرف على الكلام</label>
+    <br> <br>
+    <input type="text" name="" id="speechToText" placeholder="اضغط هنا ثم تحدث" onclick="record()" size="55">
+
+    <!-- Below is the script for voice recognition and conversion to text-->
+    <script>
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "ar-SA";
+
+            recognition.onresult = function(event) {
+                // console.log(event);
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+
+        }
+    </script>
+    <!-- end of script -->
+</body>
+</html>
